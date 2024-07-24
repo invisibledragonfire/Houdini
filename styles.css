@@ -1,0 +1,8 @@
+.fancy-border {
+  padding: 20px;
+  width: fit-content;
+  --background-color: aqua;
+  --border-color: red;
+  --border-width: 5;
+  background: paint(fancy-border);
+}
