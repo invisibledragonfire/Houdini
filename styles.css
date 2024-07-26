@@ -3,6 +3,7 @@
   width: fit-content;
   --background-color: aqua;
   --border-color: red;
-  --border-width: 5;
+  --border-width: 1;
+  --border-radius: 20;
   background: paint(fancy-border);
 }
