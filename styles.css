@@ -1,9 +1,33 @@
+@property --border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: black;
+}
+
+@property --background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --border-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
+@property --border-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
 .fancy-border {
   padding: 20px;
   width: fit-content;
-  --background-color: aqua;
-  --border-color: red;
-  --border-width: 1;
-  --border-radius: 20;
+  --background-color: rgb(255, 231, 189);
+  --border-color: rgb(240, 120, 8);
+  --border-width: 2px;
+  --border-radius: 1em;
   background: paint(fancy-border);
 }

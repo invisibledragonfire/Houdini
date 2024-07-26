@@ -12,75 +12,55 @@ class BorderPainter {
   paint(ctx, geom, props) {
     // Use `ctx` as if it was a normal canvas
 
-    const borderRadius = props.get("--border-radius");
+    const borderRadius = props.get("--border-radius").value;
+    const borderWidth = props.get("--border-width").value;
     const cornerStyle = "scoop";
 
     ctx.beginPath();
-    ctx.moveTo(0, borderRadius);
 
-    this.drawSide(
-      ctx,
+    const corners = [
       { x: 0, y: 0 },
-      { x: 0, y: geom.height },
-      0,
-      1,
-      borderRadius
-    );
-    this.drawCorner(
-      ctx,
-      { x: 0, y: geom.height },
-      1,
-      -1,
-      borderRadius,
-      cornerStyle
-    );
-    this.drawSide(
-      ctx,
-      { x: 0, y: geom.height },
-      { x: geom.width, y: geom.height },
-      1,
-      0,
-      borderRadius
-    );
-    this.drawCorner(
-      ctx,
-      { x: geom.width, y: geom.height },
-      -1,
-      -1,
-      borderRadius,
-      cornerStyle
-    );
-    this.drawSide(
-      ctx,
-      { x: geom.width, y: geom.height },
-      { x: geom.width, y: 0 },
-      0,
-      -1,
-      borderRadius
-    );
-    this.drawCorner(
-      ctx,
-      { x: geom.width, y: 0 },
-      -1,
-      1,
-      borderRadius,
-      cornerStyle
-    );
-    this.drawSide(
-      ctx,
-      { x: geom.width, y: 0 },
-      { x: 0, y: 0 },
-      -1,
-      0,
-      borderRadius
-    );
-    this.drawCorner(ctx, { x: 0, y: 0 }, 1, 1, borderRadius, cornerStyle);
+      { x: 0, y: 1 },
+      { x: 1, y: 1 },
+      { x: 1, y: 0 },
+    ];
+
+    const scale = (corner) => ({
+      x: corner.x * geom.width + ((1 - corner.x * 2) * borderWidth) / 2,
+      y: corner.y * geom.height + ((1 - corner.y * 2) * borderWidth) / 2,
+    });
+
+    for (let i = 0; i < corners.length; i++) {
+      const previousCorner = corners[i];
+      const currentCorner = corners[(i + 1) % corners.length];
+      const nextCorner = corners[(i + 2) % corners.length];
+
+      this.drawSide(
+        ctx,
+        scale(previousCorner),
+        scale(currentCorner),
+        currentCorner.x - previousCorner.x,
+        currentCorner.y - previousCorner.y,
+        borderRadius
+      );
+
+      this.drawCorner(
+        ctx,
+        scale(currentCorner),
+        previousCorner.x + nextCorner.x - 2 * currentCorner.x,
+        previousCorner.y + nextCorner.y - 2 * currentCorner.y,
+        borderRadius,
+        cornerStyle
+      );
+    }
+
+    ctx.closePath();
 
     ctx.lineWidth = 2;
     ctx.fillStyle = props.get("--background-color");
     ctx.fill();
     ctx.strokeStyle = props.get("--border-color");
-    ctx.lineWidth = props.get("--border-width");
+    ctx.lineWidth = borderWidth;
     ctx.stroke();
   }
 
