@@ -14,7 +14,7 @@ class BorderPainter {
 
     const borderRadius = props.get("--border-radius").value;
     const borderWidth = props.get("--border-width").value;
-    const cornerStyle = "scoop";
+    const cornerStyle = props.get("--corner-style").value;
 
     ctx.beginPath();
 

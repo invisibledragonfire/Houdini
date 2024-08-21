@@ -22,12 +22,32 @@
   initial-value: 0;
 }
 
+@property --corner-style {
+  syntax: "none | rounded | scoop | notch | bevel";
+  inherits: false;
+  initial-value: rounded;
+}
+
 .fancy-border {
   padding: 20px;
+  margin: 5px;
   width: fit-content;
   --background-color: rgb(255, 231, 189);
   --border-color: rgb(240, 120, 8);
   --border-width: 2px;
   --border-radius: 1em;
+  --corner-style: bevel;
+  background: paint(fancy-border);
+}
+
+.other-border {
+  padding: 20px;
+  margin: 5px;
+  width: fit-content;
+  --background-color: rgb(255, 231, 189);
+  --border-color: rgb(240, 120, 8);
+  --border-width: 3px;
+  --border-radius: 0.5em;
+  --corner-style: scoop;
   background: paint(fancy-border);
 }
