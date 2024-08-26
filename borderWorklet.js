@@ -11,6 +11,8 @@ class BorderPainter {
 
   paint(ctx, geom, props) {
     // Use `ctx` as if it was a normal canvas
+    console.log(props.get("--corner-style"));
+    console.log(props.get("--corner-style").value);
 
     const borderRadius = props.get("--border-radius").value;
     const borderWidth = props.get("--border-width").value;
@@ -20,9 +22,9 @@ class BorderPainter {
 
     const corners = [
       { x: 0, y: 0 },
-      { x: 0, y: 1 },
-      { x: 1, y: 1 },
       { x: 1, y: 0 },
+      { x: 1, y: 1 },
+      { x: 0, y: 1 },
     ];
 
     const scale = (corner) => ({
@@ -31,18 +33,9 @@ class BorderPainter {
     });
 
     for (let i = 0; i < corners.length; i++) {
-      const previousCorner = corners[i];
-      const currentCorner = corners[(i + 1) % corners.length];
-      const nextCorner = corners[(i + 2) % corners.length];
-
-      this.drawSide(
-        ctx,
-        scale(previousCorner),
-        scale(currentCorner),
-        currentCorner.x - previousCorner.x,
-        currentCorner.y - previousCorner.y,
-        borderRadius
-      );
+      const previousCorner = corners[(i + corners.length - 1) % corners.length];
+      const currentCorner = corners[i];
+      const nextCorner = corners[(i + 1) % corners.length];
 
       this.drawCorner(
         ctx,
@@ -51,6 +44,15 @@ class BorderPainter {
         previousCorner.y + nextCorner.y - 2 * currentCorner.y,
         borderRadius,
         cornerStyle
+      );
+
+      this.drawSide(
+        ctx,
+        scale(currentCorner),
+        scale(nextCorner),
+        nextCorner.x - currentCorner.x,
+        nextCorner.y - currentCorner.y,
+        borderRadius
       );
     }
 
@@ -65,7 +67,7 @@ class BorderPainter {
   }
 
   drawSide(ctx, start, end, dx, dy, borderRadius) {
-    ctx.lineTo(start.x + dx * borderRadius, start.y + dy * borderRadius);
+    // ctx.lineTo(start.x + dx * borderRadius, start.y + dy * borderRadius);
     ctx.lineTo(end.x - dx * borderRadius, end.y - dy * borderRadius);
   }
 
@@ -75,8 +77,8 @@ class BorderPainter {
       y: corner.y + dy * borderRadius,
     };
     const end = {
-      x: corner.x + ((dx - dy) / 2) * borderRadius,
-      y: corner.y + ((dx + dy) / 2) * borderRadius,
+      x: corner.x + ((dy + dx) / 2) * borderRadius,
+      y: corner.y + ((dy - dx) / 2) * borderRadius,
     };
     const n = Math.abs(dx + dy) / 2 + (dx + 1);
 
@@ -86,9 +88,8 @@ class BorderPainter {
           mid.x,
           mid.y,
           borderRadius,
-          (n * Math.PI) / 2,
           ((n - 1) * Math.PI) / 2,
-          true
+          (n * Math.PI) / 2
         );
         break;
 
@@ -97,8 +98,9 @@ class BorderPainter {
           corner.x,
           corner.y,
           borderRadius,
-          (((n + 1) % 4) * Math.PI) / 2,
-          (((n + 2) % 4) * Math.PI) / 2
+          ((n + 2) * Math.PI) / 2,
+          ((n + 1) * Math.PI) / 2,
+          true
         );
         break;
 

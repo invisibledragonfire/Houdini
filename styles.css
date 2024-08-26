@@ -36,8 +36,23 @@
   --border-color: rgb(240, 120, 8);
   --border-width: 2px;
   --border-radius: 1em;
-  --corner-style: bevel;
   background: paint(fancy-border);
+}
+
+.bevel {
+  --corner-style: bevel;
+}
+
+.notch {
+  --corner-style: notch;
+}
+
+.rounded {
+  --corner-style: rounded;
+}
+
+.scoop {
+  --corner-style: scoop;
 }
 
 .other-border {
