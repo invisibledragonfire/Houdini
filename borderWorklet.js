@@ -20,11 +20,17 @@ class BorderPainter {
 
   paint(ctx, geom, props) {
     // Use `ctx` as if it was a normal canvas
+    console.log(props.get("--corner-style"));
+    console.log(props.getAll("--corner-style"));
+
     const borderRadii = this.parseList(props.getAll("--border-radius")).map(
       (item) => item.value
     );
     const borderWidth = props.get("--border-width").value;
-    const cornerStyle = props.get("--corner-style").value;
+    const cornerStyles = this.parseList(
+      props.get("--corner-style")[0].split(" ")
+    );
+    console.log(cornerStyles);
 
     ctx.beginPath();
 
@@ -51,7 +57,7 @@ class BorderPainter {
         previousCorner.x + nextCorner.x - 2 * currentCorner.x,
         previousCorner.y + nextCorner.y - 2 * currentCorner.y,
         borderRadii[i],
-        cornerStyle
+        cornerStyles[i]
       );
 
       this.drawSide(

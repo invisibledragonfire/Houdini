@@ -23,7 +23,7 @@
 }
 
 @property --corner-style {
-  syntax: "rounded | scoop | notch | bevel";
+  syntax: "*# | *+";
   inherits: false;
   initial-value: rounded;
 }
@@ -37,10 +37,11 @@
   --border-width: 2px;
   --border-radius: 1em;
   background: paint(fancy-border);
+  --corner-style: bevel scoop notch rounded;
 }
 
 .bevel {
-  --corner-style: bevel;
+  --corner-style: bevel notch scoop;
 }
 
 .notch {
@@ -56,17 +57,17 @@
 }
 
 .mix1 {
-  --corner-style: notch;
+  --corner-style: notch bevel bevel;
   --border-radius: 1em, 0, 0.3em;
 }
 
 .mix2 {
-  --corner-style: rounded;
+  --corner-style: rounded bevel notch rounded;
   --border-radius: 1em 0.5em 0.1em 1em;
 }
 
 .mix3 {
-  --corner-style: bevel;
+  --corner-style: bevel scoop notch bevel;
   --border-radius: 0, 1em;
 }
 
