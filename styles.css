@@ -17,13 +17,13 @@
 }
 
 @property --border-radius {
-  syntax: "<length>";
+  syntax: "<length># | <length>+";
   inherits: false;
   initial-value: 0;
 }
 
 @property --corner-style {
-  syntax: "none | rounded | scoop | notch | bevel";
+  syntax: "rounded | scoop | notch | bevel";
   inherits: false;
   initial-value: rounded;
 }
@@ -55,6 +55,21 @@
   --corner-style: scoop;
 }
 
+.mix1 {
+  --corner-style: notch;
+  --border-radius: 1em, 0, 0.3em;
+}
+
+.mix2 {
+  --corner-style: rounded;
+  --border-radius: 1em 0.5em 0.1em 1em;
+}
+
+.mix3 {
+  --corner-style: bevel;
+  --border-radius: 0, 1em;
+}
+
 .other-border {
   padding: 20px;
   margin: 5px;
@@ -62,7 +77,7 @@
   --background-color: rgb(255, 231, 189);
   --border-color: rgb(240, 120, 8);
   --border-width: 3px;
-  --border-radius: 0.5em;
+  --border-radius: 0.5em, 1em, 0em;
   --corner-style: scoop;
   background: paint(fancy-border);
 }

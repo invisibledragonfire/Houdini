@@ -9,12 +9,20 @@ class BorderPainter {
     ];
   }
 
+  parseList(list) {
+    return [
+      list[0],
+      list[1] || list[0],
+      list[2] || list[0],
+      list[3] || list[1] || list[0],
+    ];
+  }
+
   paint(ctx, geom, props) {
     // Use `ctx` as if it was a normal canvas
-    console.log(props.get("--corner-style"));
-    console.log(props.get("--corner-style").value);
-
-    const borderRadius = props.get("--border-radius").value;
+    const borderRadii = this.parseList(props.getAll("--border-radius")).map(
+      (item) => item.value
+    );
     const borderWidth = props.get("--border-width").value;
     const cornerStyle = props.get("--corner-style").value;
 
@@ -42,7 +50,7 @@ class BorderPainter {
         scale(currentCorner),
         previousCorner.x + nextCorner.x - 2 * currentCorner.x,
         previousCorner.y + nextCorner.y - 2 * currentCorner.y,
-        borderRadius,
+        borderRadii[i],
         cornerStyle
       );
 
@@ -52,7 +60,8 @@ class BorderPainter {
         scale(nextCorner),
         nextCorner.x - currentCorner.x,
         nextCorner.y - currentCorner.y,
-        borderRadius
+        borderRadii[i],
+        borderRadii[(i + 1) % corners.length]
       );
     }
 
@@ -66,9 +75,9 @@ class BorderPainter {
     ctx.stroke();
   }
 
-  drawSide(ctx, start, end, dx, dy, borderRadius) {
-    // ctx.lineTo(start.x + dx * borderRadius, start.y + dy * borderRadius);
-    ctx.lineTo(end.x - dx * borderRadius, end.y - dy * borderRadius);
+  drawSide(ctx, start, end, dx, dy, startBorderRadius, endBorderRadius) {
+    // ctx.lineTo(start.x + dx * startBorderRadius, start.y + dy * startBorderRadius);
+    ctx.lineTo(end.x - dx * endBorderRadius, end.y - dy * endBorderRadius);
   }
 
   drawCorner(ctx, corner, dx, dy, borderRadius, cornerStyle) {
