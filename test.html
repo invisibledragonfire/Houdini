@@ -3,20 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HTML5 Boilerplate</title>
+    <title>Borderstyles</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div class="fancy-border bevel">Bevel</div>
-    <div class="fancy-border notch">Notch</div>
-    <div class="fancy-border scoop">Scoop</div>
-    <div class="fancy-border rounded">Rounded</div>
-    <div class="fancy-border mix1">Mix 1</div>
-    <div class="fancy-border mix2">Mix 2</div>
-    <div class="fancy-border mix3">Mix 3</div>
-    <div class="fancy-border">Border Test</div>
-    <div class="other-border">Border Test</div>
+    <div class="corner-tests">
+      <div class="fancy-border bevel">Bevel</div>
+      <div class="fancy-border notch">Notch</div>
+      <div class="fancy-border scoop">Scoop</div>
+      <div class="fancy-border rounded">Rounded</div>
+      <div class="fancy-border mix1">Mix 1</div>
+      <div class="fancy-border mix2">Mix 2</div>
+      <div class="fancy-border mix3">Mix 3</div>
+      <div class="fancy-border">Border Test</div>
+      <div class="other-border">Border Test</div>
+    </div>
+    <div class="side-tests">
+      <div class="fancy-border-side side-basic">Basic</div>
+      <div class="fancy-border-side side-rounded">Rounded</div>
+      <div class="fancy-border-side side-bevel">Bevel</div>
+      <div class="fancy-border-side side-curl">Curl</div>
+    </div>
     <script>
       CSS.paintWorklet.addModule("borderWorklet.js");
     </script>

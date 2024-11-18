@@ -23,9 +23,35 @@
 }
 
 @property --corner-style {
-  syntax: "*# | *+";
+  syntax: "*";
   inherits: false;
   initial-value: rounded;
+}
+
+@property --side-inset {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --side-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.side-tests,
+.corner-tests {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .fancy-border {
@@ -41,7 +67,7 @@
 }
 
 .bevel {
-  --corner-style: bevel notch scoop;
+  --corner-style: bevel;
 }
 
 .notch {
@@ -81,4 +107,36 @@
   --border-radius: 0.5em, 1em, 0em;
   --corner-style: scoop;
   background: paint(fancy-border);
+}
+
+.fancy-border-side {
+  padding: 20px;
+  margin: 5px;
+  width: fit-content;
+  --background-color: rgb(201, 255, 189);
+  --border-color: rgb(120, 240, 8);
+  --border-width: 2px;
+  --border-radius: 1em;
+  background: paint(fancy-border);
+  --corner-style: none;
+}
+
+.side-basic {
+  --side-inset: 10px;
+  --side-style: inset;
+}
+
+.side-rounded {
+  --side-inset: 10px;
+  --side-style: rounded;
+}
+
+.side-bevel {
+  --side-inset: 10px;
+  --side-style: bevel;
+}
+
+.side-curl {
+  --side-inset: 10px;
+  --side-style: curl;
 }
