@@ -1,0 +1,68 @@
+@property --border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: black;
+}
+
+@property --background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --border-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
+@property --border-radius {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --corner-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+@property --side-inset {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --side-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+.container {
+  display: flex;
+}
+
+.box {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 300px;
+  height: 200px;
+  background: paint(fancy-border);
+  --background-color: rgb(255, 231, 189);
+  --border-color: rgb(240, 120, 8);
+  --border-width: 2px;
+  --border-radius: 50px;
+  --corner-style: rounded;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.header {
+  grid-column: 1/-1;
+}

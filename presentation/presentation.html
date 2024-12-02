@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Houdini Presentation</title>
+    <link rel="stylesheet" href="presentation.css" />
+    <script src="presentation.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="box" class="box">Box</div>
+      <div class="controls">
+        <h2 class="header">BorderRadius</h2>
+
+        <input type="checkbox" checked="true" id="borderRadiusCheckbox0" />
+        <input type="range" min="0" max="100" id="borderRadiusSlider0" />
+
+        <input type="checkbox" checked="true" id="borderStyleCheckbox0" />
+        <select id="borderStyleDropdown0">
+          <option value="rounded">Rounded</option>
+          <option value="bevel">Bevel</option>
+          <option value="notch">Notch</option>
+          <option value="scoop">Scoop</option>
+        </select>
+
+        <input type="checkbox" id="borderRadiusCheckbox1" />
+        <input type="range" min="0" max="100" id="borderRadiusSlider1" />
+
+        <input type="checkbox" id="borderStyleCheckbox1" />
+        <select id="borderStyleDropdown1">
+          <option value="rounded">Rounded</option>
+          <option value="bevel">Bevel</option>
+          <option value="notch">Notch</option>
+          <option value="scoop">Scoop</option>
+        </select>
+
+        <input type="checkbox" id="borderRadiusCheckbox2" />
+        <input type="range" min="0" max="100" id="borderRadiusSlider2" />
+
+        <input type="checkbox" id="borderStyleCheckbox2" />
+        <select id="borderStyleDropdown2">
+          <option value="rounded">Rounded</option>
+          <option value="bevel">Bevel</option>
+          <option value="notch">Notch</option>
+          <option value="scoop">Scoop</option>
+        </select>
+
+        <input type="checkbox" id="borderRadiusCheckbox3" />
+        <input type="range" min="0" max="100" id="borderRadiusSlider3" />
+
+        <input type="checkbox" id="borderStyleCheckbox3" />
+        <select id="borderStyleDropdown3">
+          <option value="rounded">Rounded</option>
+          <option value="bevel">Bevel</option>
+          <option value="notch">Notch</option>
+          <option value="scoop">Scoop</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      CSS.paintWorklet.addModule("../borderWorklet.js");
+    </script>
+  </body>
+</html>
