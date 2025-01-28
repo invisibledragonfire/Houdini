@@ -42,6 +42,7 @@
 
 .container {
   display: flex;
+  align-items: center;
 }
 
 .box {
@@ -61,8 +62,18 @@
 .controls {
   display: grid;
   grid-template-columns: auto auto auto auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+.category {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row: 2 / span 4;
+  grid-template-rows: subgrid;
+  gap: 0;
 }
 
 .header {
-  grid-column: 1/-1;
+  grid-row: 1;
 }
