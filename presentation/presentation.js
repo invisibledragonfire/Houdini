@@ -1,7 +1,7 @@
 init = function () {
   const box = document.getElementById("box");
 
-  getElements = function (elementId) {
+  const getElements = function (elementId) {
     return [...Array(4).keys()].map((n) =>
       document.getElementById(elementId + n)
     );
@@ -128,3 +128,36 @@ init = function () {
 };
 
 window.onload = init;
+
+let revealStage = 0;
+const reveal = function () {
+  revealStage++;
+  console.log("revealing", revealStage);
+
+  const stageElements = document.getElementsByClassName(
+    "reveal-" + revealStage
+  );
+
+  for (stageElement of stageElements) {
+    stageElement.classList.remove("hidden");
+  }
+};
+
+let stage = 0;
+window.onkeyup = (event) => {
+  if (event.key !== "n") {
+    return;
+  }
+  stage++;
+
+  const box = document.getElementById("box");
+
+  switch (stage) {
+    case 1:
+      box.innerText = "A box";
+      box.classList.remove("box-hidden");
+      break;
+    default:
+      reveal();
+  }
+};

@@ -40,15 +40,27 @@
   initial-value: rounded;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 .container {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .box {
   display: grid;
   justify-content: center;
   align-content: center;
+  font-size: xx-large;
   width: 300px;
   height: 200px;
   background: paint(fancy-border);
@@ -57,6 +69,14 @@
   --border-width: 2px;
   --border-radius: 50px;
   --corner-style: rounded;
+
+  transition: --border-color 4s, --background-color 4s, font-size 4s;
+}
+
+.box-hidden {
+  --background-color: transparent;
+  --border-color: transparent;
+  font-size: larger;
 }
 
 .controls {
@@ -72,8 +92,21 @@
   grid-row: 2 / span 4;
   grid-template-rows: subgrid;
   gap: 0;
+  opacity: 1;
+  transition: opacity 2s;
 }
 
 .header {
   grid-row: 1;
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+input {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+.hidden {
+  opacity: 0;
 }

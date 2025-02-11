@@ -9,48 +9,69 @@
   </head>
   <body>
     <div class="container">
-      <div id="box" class="box">Box</div>
+      <div id="box" class="box box-hidden">Behold!</div>
       <div class="controls">
-        <h2 class="header">BorderRadius</h2>
-        <div class="category">
-          <input type="checkbox" checked="true" id="borderRadiusCheckbox0" />
+        <h2 class="header hidden reveal-1">BorderRadius</h2>
+        <div class="category hidden reveal-1">
+          <input
+            type="checkbox"
+            checked="true"
+            id="borderRadiusCheckbox0"
+            class="hidden reveal-2"
+          />
           <input
             type="range"
             min="0"
             max="100"
-            value="30"
+            value="0"
             id="borderRadiusSlider0"
+            class="hidden reveal-1"
           />
 
-          <input type="checkbox" id="borderRadiusCheckbox1" />
+          <input
+            type="checkbox"
+            id="borderRadiusCheckbox1"
+            class="hidden reveal-2"
+          />
           <input
             type="range"
             min="0"
             max="100"
-            value="30"
+            value="0"
             id="borderRadiusSlider1"
+            class="hidden reveal-2"
           />
 
-          <input type="checkbox" id="borderRadiusCheckbox2" />
+          <input
+            type="checkbox"
+            id="borderRadiusCheckbox2"
+            class="hidden reveal-2"
+          />
           <input
             type="range"
             min="0"
             max="100"
-            value="30"
+            value="0"
             id="borderRadiusSlider2"
+            class="hidden reveal-2"
           />
 
-          <input type="checkbox" id="borderRadiusCheckbox3" />
+          <input
+            type="checkbox"
+            id="borderRadiusCheckbox3"
+            class="hidden reveal-2"
+          />
           <input
             type="range"
             min="0"
             max="100"
-            value="30"
+            value="0"
             id="borderRadiusSlider3"
+            class="hidden reveal-2"
           />
         </div>
-        <h2 class="header">CornerType</h2>
-        <div class="category">
+        <h2 class="header hidden reveal-3">CornerType</h2>
+        <div class="category hidden reveal-3">
           <input type="checkbox" checked="true" id="borderStyleCheckbox0" />
           <select id="borderStyleDropdown0">
             <option value="rounded">Rounded</option>
@@ -83,14 +104,14 @@
             <option value="scoop">Scoop</option>
           </select>
         </div>
-        <h2 class="header">SideInset</h2>
-        <div class="category">
+        <h2 class="header hidden reveal-4">SideInset</h2>
+        <div class="category hidden reveal-4">
           <input type="checkbox" checked="true" id="sideInsetCheckbox0" />
           <input
             type="range"
             min="0"
             max="100"
-            value="20"
+            value="0"
             id="sideInsetSlider0"
           />
 
@@ -99,7 +120,7 @@
             type="range"
             min="0"
             max="100"
-            value="20"
+            value="0"
             id="sideInsetSlider1"
           />
 
@@ -108,7 +129,7 @@
             type="range"
             min="0"
             max="100"
-            value="20"
+            value="0"
             id="sideInsetSlider2"
           />
 
@@ -117,12 +138,12 @@
             type="range"
             min="0"
             max="100"
-            value="20"
+            value="0"
             id="sideInsetSlider3"
           />
         </div>
-        <h2 class="header">SideType</h2>
-        <div class="category">
+        <h2 class="header hidden reveal-5">SideType</h2>
+        <div class="category hidden reveal-5">
           <input type="checkbox" checked="true" id="sideStyleCheckbox0" />
           <select id="sideStyleDropdown0">
             <option value="inset">Inset</option>
