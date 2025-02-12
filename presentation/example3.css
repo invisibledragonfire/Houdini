@@ -1,0 +1,123 @@
+@property --border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: black;
+}
+
+@property --background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --border-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
+@property --border-radius {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --corner-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+@property --side-inset {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --side-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 98px 98px 1fr;
+  grid-template-rows: 1fr 98px 98px 1fr;
+  gap: 2px;
+}
+
+.cell {
+  background-color: hsl(var(--hue), 70%, 80%);
+  border-color: hsl(var(--hue), 70%, 50%);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.red {
+  --hue: 0;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --border-radius: 0 0 100px 0;
+  --corner-style: scoop;
+}
+
+.blue {
+  --hue: 240;
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --border-radius: 0 0 0 100px;
+  --corner-style: scoop;
+}
+
+.green {
+  --hue: 120;
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --border-radius: 0, 100px, 0, 0;
+  --corner-style: scoop;
+}
+
+.orange {
+  --hue: 30;
+  grid-column: 3 / span 2;
+  grid-row: 3 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --border-radius: 100px 0 0 0;
+  --corner-style: scoop;
+}
+
+.cyan {
+  --hue: 180;
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 2;
+  border-radius: 50%;
+}

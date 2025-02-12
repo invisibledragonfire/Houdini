@@ -1,0 +1,100 @@
+@property --border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: black;
+}
+
+@property --background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --border-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
+@property --border-radius {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --corner-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+@property --side-inset {
+  syntax: "<length># | <length>+";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --side-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: rounded;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-rows: 1fr 100px 100px 1fr;
+  gap: 10px;
+}
+
+.cell {
+  background-color: hsl(var(--hue), 70%, 80%);
+  border-color: hsl(var(--hue), 70%, 50%);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.red {
+  --hue: 0;
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.blue {
+  --hue: 240;
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --border-radius: 148px;
+  --corner-style: normal;
+  --side-inset: 0 0 110px 0;
+  --side-style: inset;
+}
+
+.green {
+  --hue: 120;
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 2;
+
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 70%, 80%);
+  --border-color: hsl(var(--hue), 70%, 50%);
+  --border-width: 2px;
+  --corner-style: normal;
+  --border-radius: 148px;
+  --side-inset: 110px 0 0 0;
+  --side-style: inset;
+}
