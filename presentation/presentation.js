@@ -157,6 +157,8 @@ window.onkeyup = (event) => {
       box.innerText = "A box";
       box.classList.remove("box-hidden");
       break;
+    case 7:
+      window.open(`/presentation/example1`, "_self");
     default:
       reveal();
   }
