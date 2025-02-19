@@ -40,20 +40,49 @@
   initial-value: rounded;
 }
 
+@property --first-column {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --first-row {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
 }
 
+@keyframes horizontal {
+  100% {
+    --first-column: calc(100vw - 242px);
+  }
+}
+
+@keyframes vertical {
+  100% {
+    --first-row: calc(100vh - 242px);
+  }
+}
+
 .container {
+  --first-column: 2px;
+  --first-row: 2px;
   box-sizing: border-box;
   height: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 98px 98px 1fr;
-  grid-template-rows: 1fr 98px 98px 1fr;
+  grid-template-columns: var(--first-column) 98px 98px 1fr;
+  grid-template-rows: var(--first-row) 98px 98px 1fr;
   gap: 2px;
+  animation: linear horizontal 5s, linear vertical 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .cell {
