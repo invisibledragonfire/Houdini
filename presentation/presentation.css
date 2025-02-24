@@ -110,3 +110,32 @@ input {
 .hidden {
   opacity: 0;
 }
+
+.info {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  padding: 0.2em 0.5em;
+
+  color: hsl(var(--hue), 50%, 30%);
+  --hue: 270;
+  background: paint(fancy-border);
+  --background-color: hsl(var(--hue), 50%, 90%);
+  --border-color: hsl(var(--hue), 50%, 60%);
+  --border-width: 2px;
+  --border-radius: 0 0.7em 0.7em 0;
+  --corner-style: bevel;
+  transition: --border-color, --background-color, color;
+  transition-delay: 5s;
+  transition-duration: 5s;
+}
+
+.info-hidden {
+  --background-color: transparent;
+  --border-color: transparent;
+  color: transparent;
+}
+
+.bold {
+  font-weight: bold;
+}

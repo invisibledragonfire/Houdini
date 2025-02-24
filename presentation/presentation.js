@@ -1,4 +1,7 @@
 init = function () {
+  infoElement = document.getElementById("info");
+  infoElement.classList.remove("info-hidden");
+
   const box = document.getElementById("box");
 
   const getElements = function (elementId) {
@@ -152,13 +155,18 @@ window.onkeyup = (event) => {
 
   const box = document.getElementById("box");
 
+  const infoAction = document.getElementById("action");
+
   switch (stage) {
     case 1:
       box.innerText = "A box";
       box.classList.remove("box-hidden");
+      infoAction.textContent = "reveal more features";
       break;
     case 7:
-      window.open(`/presentation/example1`, "_self");
+      window.open(`example1.html`, "_self");
+    case 6:
+      infoAction.textContent = "view examples";
     default:
       reveal();
   }
