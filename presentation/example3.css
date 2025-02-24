@@ -60,7 +60,7 @@ body {
 
 @keyframes horizontal {
   100% {
-    --first-column: calc(100vw - 242px);
+    grid-template-columns: calc(100vw - 242px) 98px 98px 1fr;
   }
 }
 
@@ -77,7 +77,7 @@ body {
   height: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: var(--first-column) 98px 98px 1fr;
+  grid-template-columns: 2px 98px 98px 1fr;
   grid-template-rows: var(--first-row) 98px 98px 1fr;
   gap: 2px;
   animation: linear horizontal 5s, linear vertical 3s;
